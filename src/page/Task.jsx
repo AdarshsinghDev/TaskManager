@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import bg from "../assets/bg.svg";
 import TaskHeader from "../components/TaskHeader.jsx";
-import TaskCard from "../components/taskCard.jsx";
+import TaskCard from "../components/TaskCard.jsx";
 import Footer from "../components/Footer.jsx";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { useEffect } from "react";
-import { updateTask } from "../../../server/controllers/taskController.js";
+import { updateTask } from "../../../sexrver/controllers/TaskController.js";
 
 const Task = () => {
   const [tasks, setTasks] = useState([]);
