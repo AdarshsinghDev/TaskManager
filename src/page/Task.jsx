@@ -83,7 +83,7 @@ const Task = () => {
 
   return (
     <div className="relative w-full">
-      <div className="max-w-[90%] m-auto">
+      <div className="max-w-[40%] m-auto taskMain">
         <img
           src={bg}
           className="absolute inset-0 w-full h-full object-cover"
@@ -108,7 +108,9 @@ const Task = () => {
               autoClose={3000}
               hideProgressBar={false}
             />
-            <Footer />
+            <div className="absolute left-0 right-0 bottom-0 w-full p-0">
+              <Footer />
+            </div>
           </div>
         </div>
       </div>
