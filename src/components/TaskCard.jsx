@@ -24,8 +24,8 @@ const TaskCard = ({
     onUpdateTask(id, { taskName: editedTask });
   };
   return (
-    <div className="bg-white/10 flex justify-between items-center mb-4 backdrop-blur-md border border-white/30 rounded-lg shadow-2xl  p-4 pb-2">
-      <div className="text-white">
+    <div className="bg-white/10 flex justify-between items-center mb-4 backdrop-blur-md border border-white/30 rounded-lg shadow-2xl w-[100%] p-4 pb-2">
+      <div className="text-white w-[60%]">
         <div className="flex gap-1">
           {editTask ? (
             <>
@@ -67,7 +67,7 @@ const TaskCard = ({
 
         <div className="text-[12px] text-[#ffffffc2]">{time}</div>
       </div>
-      <div className="flex gap-4 text-[#147762] text-xl ">
+      <div className="flex gap-4 text-[#147762] text-xl w-[40%] ">
         <button className="hover:text-[#116553]" onClick={handleEdit}>
           <FaEdit />
         </button>
