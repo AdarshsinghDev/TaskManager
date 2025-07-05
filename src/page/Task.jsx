@@ -7,7 +7,6 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { useEffect } from "react";
-import { updateTask } from "../../../sexrver/controllers/TaskController.js";
 
 const Task = () => {
   const [tasks, setTasks] = useState([]);
@@ -46,6 +45,24 @@ const Task = () => {
       .catch((err) => {
         console.error("Task deletion failed", err);
         toast.error("Task deletion failed!");
+      });
+  };
+
+  const updateTask = (taskId, updatedFields) => {
+    axios
+      .put(`http://localhost:8000/api/task/${taskId}`, updatedFields)
+      .then((res) => {
+        const updatedTask = res.data.task;
+        setTasks((prevTasks) =>
+          prevTasks.map((task) =>
+            task._id === updatedTask._id ? { ...task, ...updatedFields } : task
+          )
+        );
+        toast.success("Task Updated!");
+      })
+      .catch((err) => {
+        console.error("Update task failed", err);
+        toast.error("Update failed!");
       });
   };
 
