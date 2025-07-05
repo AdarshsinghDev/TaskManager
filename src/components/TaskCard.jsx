@@ -67,7 +67,7 @@ const TaskCard = ({
 
         <div className="text-[12px] text-[#ffffffc2]">{time}</div>
       </div>
-      <div className="flex gap-4 text-[#147762] text-xl w-[40%] ">
+      <div className="flex gap-4 text-[#147762] text-xl w-[40%] justify-end ">
         <button className="hover:text-[#116553]" onClick={handleEdit}>
           <FaEdit />
         </button>

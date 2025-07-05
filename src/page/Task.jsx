@@ -26,7 +26,10 @@ const Task = () => {
       isDone: false,
     };
     axios
-      .post("https://taskmanager-backend-56z2.onrender.com/api/task", { taskName, isDone: false })
+      .post("https://taskmanager-backend-56z2.onrender.com/api/task", {
+        taskName,
+        isDone: false,
+      })
       .then((res) => {
         setTasks([res.data.task, ...tasks]);
         toast.success("Task Added Successfully!");
@@ -36,7 +39,9 @@ const Task = () => {
 
   const deleteTask = (taskId) => {
     axios
-      .delete(`https://taskmanager-backend-56z2.onrender.com/api/task/${taskId}`)
+      .delete(
+        `https://taskmanager-backend-56z2.onrender.com/api/task/${taskId}`
+      )
       .then((res) => {
         const filteredTask = tasks.filter((task) => task._id !== taskId);
         setTasks(filteredTask);
@@ -50,7 +55,10 @@ const Task = () => {
 
   const updateTask = (taskId, updatedFields) => {
     axios
-      .put(`https://taskmanager-backend-56z2.onrender.com/api/task/${taskId}`, updatedFields)
+      .put(
+        `https://taskmanager-backend-56z2.onrender.com/api/task/${taskId}`,
+        updatedFields
+      )
       .then((res) => {
         const updatedTask = res.data.task;
         setTasks((prevTasks) =>
@@ -75,31 +83,33 @@ const Task = () => {
 
   return (
     <div className="relative w-full">
-      <img
-        src={bg}
-        className="absolute inset-0 w-full h-full object-cover"
-        alt="background"
-      />
-      <div className="font-montserrat relative z-10 flex flex-col items-center min-h-screen">
-        <div className="">
-          <TaskHeader onAddTask={addTask} />
-          {tasks.map((task) => (
-            <TaskCard
-              key={task._id}
-              id={task._id}
-              time={new Date(task.createdAt).toLocaleTimeString()}
-              taskName={task.taskName}
-              isDone={task.isDone}
-              onDeleteTask={deleteTask}
-              onUpdateTask={updateTask}
+      <div className="max-w-[90%] m-auto">
+        <img
+          src={bg}
+          className="absolute inset-0 w-full h-full object-cover"
+          alt="background"
+        />
+        <div className="font-montserrat relative z-10 flex flex-col items-center min-h-screen">
+          <div className="">
+            <TaskHeader onAddTask={addTask} />
+            {tasks.map((task) => (
+              <TaskCard
+                key={task._id}
+                id={task._id}
+                time={new Date(task.createdAt).toLocaleTimeString()}
+                taskName={task.taskName}
+                isDone={task.isDone}
+                onDeleteTask={deleteTask}
+                onUpdateTask={updateTask}
+              />
+            ))}
+            <ToastContainer
+              position="top-center"
+              autoClose={3000}
+              hideProgressBar={false}
             />
-          ))}
-          <ToastContainer
-            position="top-center"
-            autoClose={3000}
-            hideProgressBar={false}
-          />
-          <Footer />
+            <Footer />
+          </div>
         </div>
       </div>
     </div>
