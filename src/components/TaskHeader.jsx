@@ -12,9 +12,11 @@ const TaskHeader = ({ onAddTask }) => {
   return (
     <div className="bg-[#ffffff38] shadow-2xl border-b-4 border-b-[#147762] p-4 mb-8 mt-8 text-center w-full sm:w-[80%] md:w-[100%] sm:flex-col m-auto">
       <div className="flex justify-center gap-1 items-center mb-10 ">
-        <h1 className="text-2xl text-white font-light">Task Manager</h1>
+        <h1 className="text-2xl text-white font-light">
+          Collaborative Task Board
+        </h1>
         <span>
-          <img src={flower} width={35}  alt="" />
+          <img src={flower} width={35} alt="" />
         </span>
       </div>
       <div className="flex gap-1 flex-col items-center md:flex-row sm:flex-row justify-center">
