@@ -25,11 +25,16 @@ const Task = () => {
       taskName: taskName,
       isDone: false,
     };
-    axios
-      .post("https://taskmanager-backend-56z2.onrender.com/api/task", {
-        taskName,
-        isDone: false,
-      })
+    axios.post(
+  "https://taskmanager-backend-56z2.onrender.com/api/task",
+  {
+    taskName,
+    isDone: false,
+  },
+  {
+    withCredentials: true,
+  }
+)
       .then((res) => {
         setTasks([res.data.task, ...tasks]);
         toast.success("Task Added Successfully!");
@@ -38,10 +43,12 @@ const Task = () => {
   };
 
   const deleteTask = (taskId) => {
-    axios
-      .delete(
-        `https://taskmanager-backend-56z2.onrender.com/api/task/${taskId}`
-      )
+    axios.delete(
+  `https://taskmanager-backend-56z2.onrender.com/api/task/${taskId}`,
+  {
+    withCredentials: true,
+  }
+)
       .then((res) => {
         const filteredTask = tasks.filter((task) => task._id !== taskId);
         setTasks(filteredTask);
@@ -54,11 +61,13 @@ const Task = () => {
   };
 
   const updateTask = (taskId, updatedFields) => {
-    axios
-      .put(
-        `https://taskmanager-backend-56z2.onrender.com/api/task/${taskId}`,
-        updatedFields
-      )
+    axios.put(
+  `https://taskmanager-backend-56z2.onrender.com/api/task/${taskId}`,
+  updatedFields,
+  {
+    withCredentials: true,
+  }
+)
       .then((res) => {
         const updatedTask = res.data.task;
         setTasks((prevTasks) =>
@@ -76,7 +85,9 @@ const Task = () => {
 
   useEffect(() => {
     axios
-      .get("https://taskmanager-backend-56z2.onrender.com/api/task")
+      .get("https://taskmanager-backend-56z2.onrender.com/api/task", {
+  withCredentials: true,
+})
       .then((res) => setTasks(res.data.task))
       .catch((err) => console.error("Fetch Failed", err));
   }, []);
